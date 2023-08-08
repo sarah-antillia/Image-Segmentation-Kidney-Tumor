@@ -364,9 +364,29 @@ https://kits19.grand-challenge.org
 <pre>
 https://github.com/neheller/kits19
 </pre>
+<b>3. The state of the art in kidney and kidney tumor segmentation in contrast-enhanced CT imaging: Results of the KiTS19 challenge</b><br>
+Nicholas Heller, Fabian Isensee, Klaus H. Maier-Hein, Xiaoshuai Hou,<br> 
+Chunmei Xie, Fengyi Li, Yang Nan, Guangrui Mu, Zhiyong Lin, <br>
+Miofei Han, Guang Yao, Yaozong Gao, Yao Zhang, Yixin Wang, Feng Hou, <br>
+Jiawei Yang, Guangwei Xiong, Jiang Tian, Cheng Zhong, Jun Ma, Jack Rickman,<br>
+Joshua Dean, Bethany Stai, Resha Tejpaul, Makinna Oestreich, Paul Blake, <br>
+Heather Kaluzniak, Shaneabbas Raza, Joel Rosenberg, Keenan Moore, Edward Walczak, <br>
+Zachary Rengel, Zach Edgerton, Ranveer Vasdev, Matthew Peterson, Sean McSweeney,<br>
+Sarah Peterson, Arveen Kalapara, Niranjan Sathianathen, Nikolaos Papanikolopoulos,<br>
+Christopher Weight<br>
+<pre>
+https://www.sciencedirect.com/science/article/abs/pii/S1361841520301857?via%3Dihub
+</pre>
 
-<b>3. Kidney Tumor Segmentation Based on FR2PAttU-Net Model</b><br>
+<b>4. Kidney Tumor Segmentation Based on FR2PAttU-Net Model</b><br>
 Peng Sun, Zengnan Mo, Fangrong Hu, Fang Liu, Taiping Mo, Yewei Zhang and Zhencheng Chen<br>
 <pre>
 https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2022.853281/full
 </pre>
+
+<b>5. MSS U-Net: 3D segmentation of kidneys and tumors from CT images with a multi-scale supervised U-Net</b><br>
+Wenshuai Zhao, Dihong Jiang, Jorge Peña Queralta, Tomi Westerlund<br>
+<pre>
+https://www.sciencedirect.com/science/article/pii/S2352914820301969
+</pre>
+
