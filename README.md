@@ -19,7 +19,7 @@ https://kits19.grand-challenge.org
 https://github.com/neheller/kits19
 </pre>
 
-Please see also: <a href="tps://kits-challenge.org/kits23/">[KiTS23 Homepage]</a><br>
+Please see also: <a href="https://kits-challenge.org/kits23/">[KiTS23 Homepage]</a><br>
 <br>
 
 <a href="https://kits19.grand-challenge.org/data/"><b>Challenge Data</b></a>
