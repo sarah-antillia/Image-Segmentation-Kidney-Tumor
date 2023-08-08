@@ -93,18 +93,14 @@ Image-Segmentation-Kidney-Tumor
 <h3>
 3.1 Download master dataset
 </h3>
-  Please download the original image and mask dataset <b>kits19</b> from the following link<br>
+  Please download the original image and mask dataset <b>kits19</b> by running the following commands.<br>
 <pre>
 >git clone https://github.com/neheller/kits19
 >cd kits19
->pip3 install -r requirements.txt
-</pre>
-To download <b>kits19</b> imaging and segmentation dataset, please run the following command.
-<pre>
->python3 -m starter_code.get_imaging
+>pip install -r requirements.txt
+>python -m starter_code.get_imaging
 </pre>
 
-</pre>
 The dataset <b>kits19</b> has the following folder structure.<br>
 <pre>
 ./kits19
