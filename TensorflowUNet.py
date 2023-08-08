@@ -95,7 +95,7 @@ TRAIN  = "train"
 INFER  = "infer"
 # 2023/06/10
 TILEDINFER = "tiledinfer"
-
+EVAL   = "eval"
 
 BEST_MODEL_FILE = "best_model.h5"
 
@@ -316,6 +316,9 @@ class TensorflowUNet:
     patience   = self.config.get(TRAIN, "patience")
     eval_dir   = self.config.get(TRAIN, "eval_dir")
     model_dir  = self.config.get(TRAIN, "model_dir")
+    
+    save_waits_only = self.config.get(TRAIN, "save_waits_only", dvalue=False)
+
     metrics    = ["accuracy", "val_accuracy"]
     try:
       metrics    = self.config.get(TRAIN, "metrics")
@@ -330,7 +333,9 @@ class TensorflowUNet:
     weight_filepath   = os.path.join(model_dir, BEST_MODEL_FILE)
 
     early_stopping = EarlyStopping(patience=patience, verbose=1)
-    check_point    = ModelCheckpoint(weight_filepath, verbose=1, save_best_only=True)
+    check_point    = ModelCheckpoint(weight_filepath, verbose=1, 
+                                     save_best_only=True,
+                                     save_weights_only=save_waits_only)
     epoch_change   = EpochChangeCallback(eval_dir, metrics)
 
     results = self.model.fit(x_train, y_train, 
@@ -539,7 +544,12 @@ class TensorflowUNet:
 
   def evaluate(self, x_test, y_test): 
     self.load_model()
-    score = self.model.evaluate(x_test, y_test, verbose=1)
+    #2023/08/10
+    batch_size = self.config.get(EVAL, "batch_size", dvalue=4)
+    score = self.model.evaluate(x_test, y_test, 
+                                batch_size=batch_size,
+                                verbose=1)
+
     print("Test loss    :{}".format(round(score[0], 4)))     
     print("Test accuracy:{}".format(round(score[1], 4)))
      
