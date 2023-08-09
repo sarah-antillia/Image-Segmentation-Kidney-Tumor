@@ -1,4 +1,4 @@
-# Image-Segmentation-Kidney-Tumor (2023/08/10)
+# Image-Segmentation-Kidney-Tumor (Updated:2023/08/10)
 <h2>
 1 Image-Segmentation-Kidney-Tumor 
 </h2>
@@ -56,7 +56,9 @@ SOFTWARE.
 <li>
 2023/08/10 Updated ImageMaskDatasetGenerator.py to generate an enhanced master-dataset.
 </li>
-
+<li>
+2023/08/10 Retrained Kidney-Tumor UNet model by the enhanced dataset to improve segmentation accuracy.
+</li>
 <br>
 <h2>
 2. Install Image-Segmentation-Kidney-Tumor 
@@ -147,7 +149,7 @@ The script performs the following image processings.<br>
 <pre>
 1 Select mask files having an adequately large bounding box around each segmentated region.
 2 Select image files corresponding to the selected mask files. 
-3 Create flipped and mirrored mask and image files from the selected masks and images.
+3 Create flipped, mirrored and shrinked mask and image files from the selected masks and images.
 </pre>
 
 The created <b>Kits19-master</b> dataset has the following folder structure.<br>
@@ -180,6 +182,8 @@ By using Python script <a href="./projects/Kidney-Tumor/generator/split_master.p
 <b>train/masks samples:</b><br>
 <img src="./asset/train_masks_samples.png"  width="1024" height="auto">
 <br>
+<b></b><br>
+<img src="./asset/dataset_inspection.png" width="720" height="auto"><br>
 
 <h2>
 4 Train TensorflowUNet Model
@@ -229,10 +233,8 @@ mask_datapath  = "./Kidney-Tumor/train/masks"
 create_backup  = True
 
 [eval]
-;image_datapath = "./Kidney-Tumor/valid/images"
-;mask_datapath  = "./Kidney-Tumor/valid/masks"
-image_datapath = "./mini_eval/images"
-mask_datapath  = "./mini_eval/masks"
+image_datapath = "./Kidney-Tumor/valid/images"
+mask_datapath  = "./Kidney-Tumor/valid/masks"
 output_dir     = "./eval_output"
 
 [infer] 
@@ -254,9 +256,7 @@ image_height   = 512
 base_kernels   = (7,7)
 </pre>
 
-The training process has just been stopped at epoch 50 by an early-stopping callback as shown below.<br><br>
-<img src="./asset/train_console_output_at_epoch_50_0808.png" width="720" height="auto"><br>
-<br>
+The training process has just been stopped at epoch 89.<br>
 <br>
 <b>Train metrics line graph</b>:<br>
 <img src="./asset/train_metrics.png" width="720" height="auto"><br>
@@ -279,7 +279,7 @@ Please move to ./projects/Kidney-Tumor/ directory, and run the following bat fil
 >python ../../TensorflowUNetEvaluator.py ./train_eval_infer.config
 </pre>
 The evaluation result is the following.<br>
-<img src="./asset/evaluate_mini_eval_console_output_at_epoch_50_0808.png" width="720" height="auto"><br>
+<img src="./asset/evaluate_console_output_at_epoch_89.png" width="720" height="auto"><br>
 <br>
  
 <h2>

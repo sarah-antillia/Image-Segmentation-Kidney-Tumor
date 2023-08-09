@@ -23,7 +23,7 @@ import random
 import glob
 import traceback
 
-def create_mini_test(images_dir, masks_dir, output_images_dir, output_masks_dir, num=300):
+def create_mini_eval(images_dir, masks_dir, output_images_dir, output_masks_dir, num=100):
   image_files = glob.glob(images_dir + "/*.jpg")
   random.seed = 137
   random.shuffle(image_files)
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     if not os.path.exists(output_masks_dir):
       os.makedirs(output_masks_dir)
 
-    create_mini_test(images_dir, masks_dir, output_images_dir, output_masks_dir, num=20)
+    create_mini_eval(images_dir, masks_dir, output_images_dir, output_masks_dir, num=40)
   
   except:
     traceback.print_exc()
