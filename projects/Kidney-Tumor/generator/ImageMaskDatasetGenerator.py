@@ -18,35 +18,54 @@
 import os
 import sys
 import shutil
-from xml.dom import registerDOMImplementation
 import cv2
 from PIL import Image, ImageOps
 
 import glob
 import numpy as np
 import math
+#import nibabel as nib
 import traceback
 
+
 class ImageMaskDatasetGenerator:
-  def __init__(self, mask_size=40, angles=[90, 180, 270], debug=False):
+  def __init__(self, mask_size=40, 
+                angles =[90, 180, 270], 
+                resizes=[0.8], 
+                debug  =False):
     self.MASK_SIZE= mask_size
     self.DEBUG    = debug
     self.ANGLES   = angles
+    self.RESIZES  = resizes
 
   def augment(self, image, output_dir, filename):
     image = Image.fromarray(image)
-    if len(self.ANGLES) > 0:
+    if self.ANGLES != None and len(self.ANGLES) > 0:
       for angle in self.ANGLES:
         rotated_image = image.rotate(angle)
         output_filename = "rotated_" + str(angle) + "_" + filename
         rotated_image_file = os.path.join(output_dir, output_filename)
+        #cropped  =  self.crop_image(rotated_image)
         rotated_image.save(rotated_image_file)
         print("=== Saved {}".format(rotated_image_file))
-      
+    if self.RESIZES != None and len(self.RESIZES) > 0:
+      w, h = image.size
+      for resize in self.RESIZES:
+        rw = int (w * resize)
+        rh = int (h * resize)
+        resized = image.resize((rw, rh))
+        squared = self.to_square(resized)
+        ratio = str(resize).replace(".", "_")
+        output_filename = "resized_" + ratio + "_" + filename
+        image_filepath = os.path.join(output_dir, output_filename)
+        squared.save(image_filepath)
+        print("=== Saved {}".format(image_filepath))
+
     # Create mirrored image
     mirrored = ImageOps.mirror(image)
     output_filename = "mirrored_" + filename
     image_filepath = os.path.join(output_dir, output_filename)
+    #cropped = self.crop_image(mirrored)
     
     mirrored.save(image_filepath)
     print("=== Saved {}".format(image_filepath))
@@ -63,6 +82,9 @@ class ImageMaskDatasetGenerator:
 
   def resize_to_square(self, image, RESIZE=512):
      image = Image.fromarray(image)
+     return self.to_square(image, REISZE=512)
+
+  def to_square(self, image, RESIZE=512):
      w, h = image.size
      bigger = w
      if h >bigger:
@@ -152,7 +174,10 @@ if __name__ == "__main__":
     if not os.path.exists(output_masks_dir):
       os.makedirs(output_masks_dir)
 
-    generator = ImageMaskDatasetGenerator(mask_size=40, angles=[], debug=False)
+    generator = ImageMaskDatasetGenerator(mask_size=40, 
+                                          angles  = [], 
+                                          resizes = [0.8],
+                                          debug   = False)
     generator.generate(images_dir, masks_dir, output_images_dir, output_masks_dir)
 
   except:

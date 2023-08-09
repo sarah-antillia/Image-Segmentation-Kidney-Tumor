@@ -53,6 +53,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </pre>
 
+<li>
+2023/08/10 Updated ImageMaskDatasetGenerator.py to be agle to generate an enhanced master-dataset.
+</li>
+
 <br>
 <h2>
 2. Install Image-Segmentation-Kidney-Tumor 
