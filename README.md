@@ -54,7 +54,7 @@ SOFTWARE.
 </pre>
 
 <li>
-2023/08/10 Updated ImageMaskDatasetGenerator.py to be agle to generate an enhanced master-dataset.
+2023/08/10 Updated ImageMaskDatasetGenerator.py to generate an enhanced master-dataset.
 </li>
 
 <br>
