@@ -139,7 +139,6 @@ By using Python script <a href="./projects/Kidney-Tumor/generator/create_base_da
 ├─images
 └─masks
 </pre>
-
 <h3>
 3.3 Create augmented image and mask dataset
 </h3>
@@ -151,7 +150,6 @@ The script performs the following image processings.<br>
 2 Select image files corresponding to the selected mask files. 
 3 Create flipped, mirrored and shrinked mask and image files from the selected masks and images.
 </pre>
-
 The created <b>Kits19-master</b> dataset has the following folder structure.<br>
 <pre>
 ./Kits19-master
@@ -263,7 +261,6 @@ The training process has just been stopped at epoch 89.<br>
 <br>
 <b>Train losses line graph</b>:<br>
 <img src="./asset/train_losses.png" width="720" height="auto"><br>
-
 
 <h2>
 5 Evaluation
